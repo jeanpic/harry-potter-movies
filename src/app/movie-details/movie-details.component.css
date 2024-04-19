@@ -1,0 +1,24 @@
+table {
+  display: block;
+}
+
+.header {
+  width: 10px;
+  border-right-color: black;
+  border-right-style: solid;
+}
+
+.value {
+  width: 70%;
+  background-color: white;
+}
+
+th,
+td {
+  border: 1px solid rgb(160 160 160);
+  padding: 8px 6px;
+}
+
+h2 {
+  text-align: center;
+}

@@ -1,0 +1,16 @@
+  <li *ngIf="movie() as movie">
+    <div class="box">
+      <div>
+        <strong>{{movie.title}}</strong><br/>
+        <div class="box">
+          <span>Release date: {{movie.release_date}}</span>
+          <span>Budget: {{movie.budget | dollarCurrency}}</span>
+          <span>Duration: {{movie.duration | duration}}</span>
+        </div>
+
+      </div>
+      <button [id]="movie.id" routerLink="{{'/movies/' + movie.id}}">Details</button>
+    </div>
+
+
+  </li>

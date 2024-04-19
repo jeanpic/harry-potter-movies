@@ -1,0 +1,11 @@
+<form [formGroup]="filteringForm()">
+  <h3>Filters</h3>
+  <label>
+    Title
+    <input type="text" formControlName="title" placeholder="Type some title"/>
+  </label>
+  <label>
+    Release year
+    <input type="number" formControlName="releaseYear" placeholder="Type a year"/>
+  </label>
+</form>

@@ -1,11 +1,12 @@
-import {Component, inject, TrackByFunction} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {MovieService} from "../shared/movie.service";
-import {AsyncPipe, JsonPipe} from "@angular/common";
+import {AsyncPipe} from "@angular/common";
 import {MovieListItemComponent} from "../movie-list-item/movie-list-item.component";
 import {combineLatest, map, Observable, startWith} from "rxjs";
 import {Movie} from "../shared/model/movie";
 import {MovieFiltersComponent} from "../movie-filters/movie-filters.component";
 import {FormBuilder, FormControl, ReactiveFormsModule} from "@angular/forms";
+import {MovieFilterOptions} from "../shared/model/movie-filter-options";
 
 @Component({
   selector: 'app-movie-list',
@@ -26,15 +27,12 @@ export class MovieListComponent {
     releaseYear: new FormControl<number | null>(null)
   });
 
-  movies$: Observable<Movie[]> = combineLatest([this.movieService.getMovies(),
-    this.filteringForm.valueChanges.pipe(startWith({title: "", releaseYear: null}))]).pipe(
-    map(([movies, filteringValues]) => movies?.filter(movie => {
-          const filteringYear: number | null | undefined = (filteringValues.releaseYear ?? 0) > 999 ? filteringValues.releaseYear : null;
-          return movie.title.toLowerCase().includes(filteringValues.title?.toLowerCase() ?? '') &&
-            (!filteringYear || new Date(movie.release_date).getFullYear() === filteringYear);
-        }
-      )
-    ));
+  movies$: Observable<Movie[]> = combineLatest([
+    this.movieService.getMovies(),
+    this.filteringForm.valueChanges.pipe(startWith<MovieFilterOptions>({title: "", releaseYear: null}))
+  ]).pipe(
+    map(([movies, filteringValues]: [Movie[], MovieFilterOptions]): Movie[] => this.movieService.filterMovies(movies, filteringValues))
+  );
 
   constructor(private formBuilder: FormBuilder) {
   }

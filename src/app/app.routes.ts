@@ -1,5 +1,5 @@
 import {Routes} from '@angular/router';
-import {movieDetailsResolver} from "./movie-details.resolver";
+import {movieDetailsResolver} from "./movie-details/movie-details.resolver";
 
 export const routes: Routes = [
   {

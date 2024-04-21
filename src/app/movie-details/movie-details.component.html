@@ -1,11 +1,11 @@
 <button routerLink="/movies"> 🏠 Back button</button>
-<ng-container *ngIf="movie$ | async as movie">
+@if (movie$ | async; as movie) {
   <h1>{{ movie.title }}</h1>
   <div class="box">
     <img src="{{movie.poster}}" alt="{{movie.title}} poster" width="249" height="332.25">
     <p><strong>Summary:</strong> {{ movie.summary }}</p>
   </div>
-  <h2 >Details</h2>
+  <h2>Details</h2>
   <table>
     <colgroup>
       <col class="header"/>
@@ -25,11 +25,11 @@
     </tr>
     <tr>
       <th><strong>Producers</strong></th>
-      <th>{{ movie.producers | delimitedArray }}</th>
+      <th>{{ movie.producers | spacedArray }}</th>
     </tr>
     <tr>
       <th><strong>Cinematographers</strong></th>
-      <th>{{ movie.cinematographers | delimitedArray }}</th>
+      <th>{{ movie.cinematographers | spacedArray }}</th>
     </tr>
   </table>
-</ng-container>
+}

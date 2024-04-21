@@ -1,6 +1,5 @@
-import {Component, inject, input} from '@angular/core';
+import {Component, input} from '@angular/core';
 import {Movie} from "../shared/model/movie";
-import {CurrencyPipe, NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 import {DollarCurrencyPipe} from "../shared/pipes/dollar-currency.pipe";
 import {DurationPipe} from "../shared/pipes/duration.pipe";
@@ -9,7 +8,6 @@ import {DurationPipe} from "../shared/pipes/duration.pipe";
   selector: 'app-movie-list-item',
   standalone: true,
   imports: [
-    NgIf,
     DurationPipe,
     DollarCurrencyPipe,
     RouterLink

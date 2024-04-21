@@ -1,9 +1,12 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { MovieFiltersComponent } from './movie-filters.component';
+import {MovieFiltersComponent} from './movie-filters.component';
+import {ComponentRef} from "@angular/core";
+import {FormControl, FormGroup} from "@angular/forms";
 
 describe('MovieFilterComponent', () => {
   let component: MovieFiltersComponent;
+  let componentRef: ComponentRef<MovieFiltersComponent>
   let fixture: ComponentFixture<MovieFiltersComponent>;
 
   beforeEach(async () => {
@@ -14,6 +17,11 @@ describe('MovieFilterComponent', () => {
 
     fixture = TestBed.createComponent(MovieFiltersComponent);
     component = fixture.componentInstance;
+    componentRef = fixture.componentRef;
+    componentRef.setInput('filteringForm', new FormGroup({
+      title: new FormControl<string>(""),
+      releaseYear: new FormControl<number | null>(null)
+    }));
     fixture.detectChanges();
   });
 

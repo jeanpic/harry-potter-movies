@@ -1,6 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { MovieListComponent } from './movie-list.component';
+import {MovieListComponent} from './movie-list.component';
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('MovieListComponent', () => {
   let component: MovieListComponent;
@@ -8,9 +9,10 @@ describe('MovieListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MovieListComponent]
+      imports: [MovieListComponent,
+        HttpClientTestingModule]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(MovieListComponent);
     component = fixture.componentInstance;

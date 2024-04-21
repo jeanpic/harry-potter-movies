@@ -1,5 +1,5 @@
 import {Component, input} from '@angular/core';
-import {FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-movie-filters',
@@ -11,5 +11,8 @@ import {FormGroup, ReactiveFormsModule} from "@angular/forms";
   styleUrl: './movie-filters.component.css'
 })
 export class MovieFiltersComponent {
-  filteringForm = input.required<FormGroup>()
+  filteringForm = input.required<FormGroup<{
+    title: FormControl<string | null>,
+    releaseYear: FormControl<number | null>
+  }>>()
 }

@@ -3,7 +3,7 @@ import {movieDetailsResolver} from "./movie-details/movie-details.resolver";
 
 export const routes: Routes = [
   {
-    path: 'movies',
+    path: '',
     loadComponent: () => import('./movie-list/movie-list.component').then(c => c.MovieListComponent)
   },
   {
@@ -13,5 +13,5 @@ export const routes: Routes = [
       movie: movieDetailsResolver
     }
   },
-  {path: '**', redirectTo: 'movies'}
+  {path: '**', redirectTo: ''}
 ];
